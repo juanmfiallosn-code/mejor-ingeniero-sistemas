@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cómo ser un mejor ingeniero en sistemas</title>
+<meta name="description" content="Guía práctica para estudiantes de Ingeniería en Sistemas: fundamentos, hábitos, habilidades y un plan de 90 días.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#eef3f8; --ink:#14283f; --muted:#4a5e75; --line:#c3d0de;
+  --blue:#1f4f8a; --amber:#c98a0b; --card:#f9fbfd;
+  --display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --body:"IBM Plex Sans","Segoe UI",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#0f1b2b; --ink:#e6edf5; --muted:#9db0c6; --line:#2a3d55;
+    --blue:#7fb2ee; --amber:#f0b84a; --card:#15253a;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0f1b2b; --ink:#e6edf5; --muted:#9db0c6; --line:#2a3d55;
+  --blue:#7fb2ee; --amber:#f0b84a; --card:#15253a;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font:17px/1.65 var(--body);
+  background-image:
+    linear-gradient(var(--line) 1px,transparent 1px),
+    linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:32px 32px; background-attachment:fixed;
+}
+body::before{content:"";position:fixed;inset:0;background:var(--paper);opacity:.86;z-index:-1}
+a{color:var(--blue)}
+a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+.wrap{max-width:860px;margin:0 auto;padding:0 22px}
+header.top{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
+header.top strong{font-family:var(--display);font-size:1.05rem}
+nav a{margin-left:16px;font-size:.95rem;text-decoration:none;color:var(--muted)}
+nav a:hover{color:var(--ink);text-decoration:underline}
+.hero{padding:64px 0 48px}
+.hero h1{
+  font-family:var(--display);font-weight:800;line-height:1.02;
+  font-size:clamp(2.4rem,7.5vw,4.6rem);margin:0 0 22px;letter-spacing:-.02em;max-width:14ch;
+}
+.hero p{font-size:1.2rem;max-width:56ch;color:var(--muted);margin:0 0 28px}
+.btn{
+  display:inline-block;background:var(--ink);color:var(--paper);padding:12px 22px;
+  border-radius:6px;text-decoration:none;font-weight:600;border:2px solid var(--ink)
+}
+.btn:hover{background:transparent;color:var(--ink)}
+section{padding:44px 0;border-top:2px solid var(--ink)}
+h2{font-family:var(--display);font-size:clamp(1.6rem,4vw,2.2rem);margin:0 0 8px;letter-spacing:-.01em}
+.lead{color:var(--muted);margin:0 0 28px;max-width:60ch}
+dl{margin:0}
+.row{display:grid;grid-template-columns:200px 1fr;gap:6px 28px;padding:16px 0;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:0}
+dt{font-family:var(--display);font-weight:700;font-size:1.1rem;color:var(--blue)}
+dd{margin:0}
+.habits{list-style:none;margin:0;padding:0}
+.habits li{padding:14px 0 14px 22px;border-left:4px solid var(--amber);margin-bottom:14px;background:var(--card)}
+.habits b{display:block;font-family:var(--display);font-size:1.05rem}
+.soft p{max-width:62ch;margin:0 0 14px}
+.tracker{background:var(--card);border:2px solid var(--ink);border-radius:10px;padding:24px}
+.bar{height:14px;background:var(--line);border-radius:8px;overflow:hidden;margin:10px 0 4px}
+.bar span{display:block;height:100%;width:0;background:var(--amber);transition:width .35s}
+.pct{font-family:var(--display);font-weight:700}
+fieldset{border:0;padding:0;margin:22px 0 0}
+legend{font-family:var(--display);font-weight:700;font-size:1.1rem;padding:0;margin-bottom:6px}
+label{display:flex;gap:12px;align-items:flex-start;padding:7px 0;cursor:pointer}
+input[type=checkbox]{width:20px;height:20px;margin-top:4px;accent-color:var(--blue);flex:none}
+label:has(input:checked) span{text-decoration:line-through;color:var(--muted)}
+.reset{margin-top:20px;background:none;border:2px solid var(--line);color:var(--muted);padding:8px 16px;border-radius:6px;cursor:pointer;font:inherit}
+.reset:hover{border-color:var(--ink);color:var(--ink)}
+.res{columns:2;column-gap:36px;padding:0;list-style:none;margin:0}
+.res li{break-inside:avoid;padding:8px 0;border-bottom:1px solid var(--line)}
+.res small{display:block;color:var(--muted)}
+footer{padding:36px 0 56px;border-top:2px solid var(--ink);color:var(--muted);font-size:.95rem}
+.theme{background:none;border:2px solid var(--line);color:var(--muted);border-radius:6px;padding:4px 10px;cursor:pointer;font:inherit;font-size:.9rem;margin-left:14px}
+@media (max-width:640px){
+  .row{grid-template-columns:1fr}
+  .res{columns:1}
+  nav{display:none}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.bar span{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <strong>Ingeniería en Sistemas</strong>
+    <nav aria-label="Secciones">
+      <a href="#fundamentos">Fundamentos</a>
+      <a href="#habitos">Hábitos</a>
+      <a href="#personas">Personas</a>
+      <a href="#plan">Plan</a>
+      <a href="#recursos">Recursos</a>
+      <button class="theme" id="theme" type="button" aria-label="Cambiar entre modo claro y oscuro">Tema</button>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <h1>Piensa el problema antes de escribir el código.</h1>
+      <p>Un buen ingeniero en sistemas no es el que sabe más lenguajes, sino el que entiende qué necesita la gente, lo resuelve con claridad y puede explicarlo. Esta guía reúne lo que más pesa para mejorar durante la carrera y después.</p>
+      <a class="btn" href="#plan">Empezar el plan de 90 días</a>
+    </div>
+
+    <section id="fundamentos">
+      <h2>Domina los fundamentos</h2>
+      <p class="lead">Las herramientas cambian cada año. Estas bases se mantienen, y son las que te permiten aprender cualquier tecnología nueva rápido.</p>
+      <dl>
+        <div class="row"><dt>Lógica y algoritmos</dt><dd>Aprender a descomponer un problema en pasos pequeños y comparar soluciones por su eficiencia. Practica con ejercicios cortos todas las semanas.</dd></div>
+        <div class="row"><dt>Estructuras de datos</dt><dd>Listas, pilas, colas, árboles y tablas hash. Saber cuál usar en cada caso evita código lento y difícil de mantener.</dd></div>
+        <div class="row"><dt>Bases de datos</dt><dd>Modelado, SQL, índices y normalización. Casi todo sistema real guarda información, y un mal diseño se paga después.</dd></div>
+        <div class="row"><dt>Redes y sistemas operativos</dt><dd>Cómo viaja una petición por internet, qué hace HTTP, cómo se manejan procesos y memoria. Te ayuda a entender por qué algo falla.</dd></div>
+        <div class="row"><dt>Programación en serio</dt><dd>Elige un lenguaje (Python, Java o JavaScript) y llévalo a fondo antes de saltar a otro. Después aprende un segundo para ver otras formas de pensar.</dd></div>
+      </dl>
+    </section>
+
+    <section id="habitos">
+      <h2>Hábitos que se notan en el trabajo</h2>
+      <p class="lead">Lo que separa a un estudiante de un profesional suele ser la forma de trabajar, no el talento.</p>
+      <ul class="habits">
+        <li><b>Usa Git y GitHub desde ya</b>Haz commits pequeños con mensajes claros y sube tus proyectos. Tu perfil de GitHub es tu primer currículum.</li>
+        <li><b>Escribe pruebas</b>Aunque sean simples. Te dan confianza para cambiar código sin miedo a romper lo que ya funcionaba.</li>
+        <li><b>Documenta lo que haces</b>Un buen README, comentarios donde hagan falta y nombres de variables que se entiendan solos.</li>
+        <li><b>Lee código ajeno</b>Revisa proyectos de código abierto. Se aprende mucho viendo cómo otros resuelven los mismos problemas.</li>
+        <li><b>Depura con método</b>Reproduce el error, formula una hipótesis, comprueba, cambia una sola cosa a la vez. Adivinar al azar hace perder horas.</li>
+        <li><b>Cuida la seguridad</b>Contraseñas seguras, validación de datos de entrada, respaldos y manejo responsable de la información de otras personas.</li>
+      </ul>
+    </section>
+
+    <section id="personas" class="soft">
+      <h2>Más allá del código</h2>
+      <p class="lead">Muchos proyectos fracasan por malentendidos, no por errores técnicos.</p>
+      <p><strong>Escucha antes de proponer.</strong> Antes de diseñar una solución, pregunta qué problema tiene la persona, cómo lo resuelve hoy y qué significaría para ella que quedara resuelto. Esto se llama levantamiento de requerimientos y es la parte más subestimada de la carrera.</p>
+      <p><strong>Explica sin tecnicismos.</strong> Si el dueño de un negocio no entiende tu propuesta, no la va a usar. Practica explicar un concepto técnico con ejemplos de la vida diaria.</p>
+      <p><strong>Trabaja en equipo.</strong> Pide revisiones de tu código, acepta críticas sin tomarlas personal y comparte lo que sabes. Quien enseña aprende dos veces.</p>
+      <p><strong>Gestiona tu tiempo.</strong> Divide los proyectos en tareas con fecha, avisa pronto cuando algo se atrasa y entrega algo funcionando antes de buscar la perfección.</p>
+    </section>
+
+    <section id="plan">
+      <h2>Tu plan de 90 días</h2>
+      <p class="lead">Marca lo que vayas completando. Tu avance se guarda en este navegador.</p>
+      <div class="tracker">
+        <div class="pct" id="pct">0% completado</div>
+        <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="barwrap"><span id="bar"></span></div>
+
+        <fieldset>
+          <legend>Mes 1: bases y herramientas</legend>
+          <label><input type="checkbox" data-k="a1"><span>Crear mi cuenta de GitHub y subir un primer repositorio con README</span></label>
+          <label><input type="checkbox" data-k="a2"><span>Resolver 15 ejercicios de lógica en mi lenguaje principal</span></label>
+          <label><input type="checkbox" data-k="a3"><span>Aprender los comandos básicos de Git (clone, add, commit, push, branch)</span></label>
+          <label><input type="checkbox" data-k="a4"><span>Repasar SQL: SELECT, JOIN y GROUP BY con una base de práctica</span></label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Mes 2: construir algo real</legend>
+          <label><input type="checkbox" data-k="b1"><span>Elegir un problema real (por ejemplo, el inventario de un negocio pequeño)</span></label>
+          <label><input type="checkbox" data-k="b2"><span>Hacer el diseño: requerimientos, tablas y pantallas en papel</span></label>
+          <label><input type="checkbox" data-k="b3"><span>Programar una primera versión que funcione</span></label>
+          <label><input type="checkbox" data-k="b4"><span>Escribir al menos 5 pruebas para las partes más importantes</span></label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Mes 3: pulir y mostrar</legend>
+          <label><input type="checkbox" data-k="c1"><span>Pedir a un compañero que revise mi código y corregir lo que me indique</span></label>
+          <label><input type="checkbox" data-k="c2"><span>Mostrar el proyecto a la persona que lo necesita y recoger sus comentarios</span></label>
+          <label><input type="checkbox" data-k="c3"><span>Publicar el proyecto con un README claro y capturas de pantalla</span></label>
+          <label><input type="checkbox" data-k="c4"><span>Agregar el proyecto a mi CV y a mi perfil de LinkedIn</span></label>
+        </fieldset>
+
+        <button class="reset" id="reset" type="button">Reiniciar mi progreso</button>
+      </div>
+    </section>
+
+    <section id="recursos">
+      <h2>Recursos gratuitos</h2>
+      <p class="lead">Todo esto se puede estudiar sin pagar.</p>
+      <ul class="res">
+        <li><a href="https://cs50.harvard.edu/x/" target="_blank" rel="noopener">CS50 de Harvard</a><small>Introducción a la computación, con subtítulos en español.</small></li>
+        <li><a href="https://www.freecodecamp.org/espanol/" target="_blank" rel="noopener">freeCodeCamp en español</a><small>Cursos y ejercicios de programación web y datos.</small></li>
+        <li><a href="https://roadmap.sh/" target="_blank" rel="noopener">roadmap.sh</a><small>Mapas de ruta para decidir qué aprender y en qué orden.</small></li>
+        <li><a href="https://missing.csail.mit.edu/" target="_blank" rel="noopener">The Missing Semester (MIT)</a><small>Terminal, Git, depuración y herramientas que no enseñan en clase.</small></li>
+        <li><a href="https://skills.github.com/" target="_blank" rel="noopener">GitHub Skills</a><small>Cursos interactivos de Git y GitHub.</small></li>
+        <li><a href="https://exercism.org/" target="_blank" rel="noopener">Exercism</a><small>Ejercicios de práctica en muchos lenguajes, con mentoría.</small></li>
+        <li><a href="https://www.sqlbolt.com/" target="_blank" rel="noopener">SQLBolt</a><small>Lecciones cortas e interactivas de SQL.</small></li>
+        <li><a href="https://developer.mozilla.org/es/" target="_blank" rel="noopener">MDN Web Docs</a><small>La mejor documentación de HTML, CSS y JavaScript.</small></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>Hecho por un estudiante de Ingeniería en Sistemas, para estudiantes de Ingeniería en Sistemas. Mejora un poco cada semana y vas a ver la diferencia.</p>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var boxes = Array.prototype.slice.call(document.querySelectorAll('input[type=checkbox][data-k]'));
+  var bar = document.getElementById('bar');
+  var pct = document.getElementById('pct');
+  var wrap = document.getElementById('barwrap');
+  var KEY = 'plan90-sistemas';
+  function load(){
+    try{
+      var s = JSON.parse(localStorage.getItem(KEY) || '{}');
+      boxes.forEach(function(b){ b.checked = !!s[b.dataset.k]; });
+    }catch(e){}
+  }
+  function save(){
+    try{
+      var s = {};
+      boxes.forEach(function(b){ if(b.checked) s[b.dataset.k] = 1; });
+      localStorage.setItem(KEY, JSON.stringify(s));
+    }catch(e){}
+  }
+  function paint(){
+    var done = boxes.filter(function(b){ return b.checked; }).length;
+    var p = Math.round(done / boxes.length * 100);
+    bar.style.width = p + '%';
+    pct.textContent = p + '% completado (' + done + ' de ' + boxes.length + ')';
+    wrap.setAttribute('aria-valuenow', p);
+  }
+  boxes.forEach(function(b){ b.addEventListener('change', function(){ save(); paint(); }); });
+  document.getElementById('reset').addEventListener('click', function(){
+    if(confirm('¿Seguro que quieres borrar tu progreso?')){
+      boxes.forEach(function(b){ b.checked = false; });
+      save(); paint();
+    }
+  });
+  load(); paint();
+
+  var root = document.documentElement;
+  try{ var t = localStorage.getItem('tema-sistemas'); if(t) root.setAttribute('data-theme', t); }catch(e){}
+  document.getElementById('theme').addEventListener('click', function(){
+    var dark = root.getAttribute('data-theme') === 'dark' ||
+      (!root.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    var next = dark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try{ localStorage.setItem('tema-sistemas', next); }catch(e){}
+  });
+})();
+</script>
+</body>
+</html>
